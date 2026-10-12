@@ -1,24 +1,36 @@
 package lab2;
-
+/**
+ * Responsável por controlar a quantidade de tempo de internet (horas online) dedicada a alguma disciplina.
+ * Avalia se o aluno atingiu o tempo de dedicação esperado para aquela disciplina.
+ *
+ * @author Letícia Monteiro Gomes 20260011854
+ */
 public class RegistroTempoOnline {
     private String nomeDisciplina;
-    private int tempoInvestidoOnline;
-    private int tempoEsperado;
+    private int tempoOnlineGasto;
+    private int tempoOnlineEsperado;
 
-    public RegistroTempoOnline(String nomeDisciplina){
+    public RegistroTempoOnline(String nomeDisciplina, int tempoOnlineEsperado) {
         this.nomeDisciplina = nomeDisciplina;
-        this.tempoEsperado = 120;
+        this.tempoOnlineEsperado = tempoOnlineEsperado;
+        this.tempoOnlineGasto = 0;
+    }
+    public RegistroTempoOnline(String nomeDisciplina) {
+        this.nomeDisciplina = nomeDisciplina;
+        this.tempoOnlineEsperado = 120;
+        this.tempoOnlineGasto = 0;
     }
     public void adicionaTempoOnline(int tempo){
-        this.nomeDisciplina = nomeDisciplina;
-        this.tempoEsperado = tempoEsperado;
+        this.tempoOnlineGasto += tempo;
     }
-    public void adicionaTempoOnline(int tempo){
-        this.tempoInvestidoOnline += tempo;
-    }
-   public boolean atingiuMetaTempoOnline() {return tempoInvestidoOnline >= tempoEsperado;}
+   public boolean atingiuMetaTempoOnline() {
+       if (this.tempoOnlineGasto >= this.tempoOnlineEsperado) {
+           return true;
+       }
+       return false;
+   }
 
     public String toString(){
-        return nomeDisciplina + " " + Integer.toString(tempoInvestidoOnline) + "/" + Integer.toString(tempoEsperado);
+        return this.nomeDisciplina + " " + this.tempoOnlineGasto + "/" + this.tempoOnlineEsperado;
     }
 }
